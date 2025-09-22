@@ -1,0 +1,51 @@
+<!-- <%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+
+<body>
+  <h1><%= title %></h1>
+
+  <% data.forEach((meeting) => { %>
+    <% if (meeting.mandatory) { %>
+      <span>Attendance Mandatory!</span>
+    <% } %>
+    <p><%= meeting.location %>, <%= meeting.dateTime %>, <%= meeting.topic %></p>
+  <% }); %>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html> -->
+<%- include('../partials/head.ejs') %>
+<%- include('../partials/menu.ejs') %>
+
+<body>
+  <!-- Banner / jumbotron -->
+  <div class="mt-4 p-5 bg-warning text-white rounded">
+    <h1><%= title %></h1>
+  </div>
+
+  <!-- Notes grid -->
+  <div class="container my-3">
+    <div class="row g-3">
+      <% data.forEach((meeting) => { %>
+        <div class="col-md-4">
+          <div class="note p-2">
+            <!-- reminder icon always -->
+            <img src="/images/remind.png" alt="reminder" />
+
+            <!-- label only if mandatory -->
+            <% if (meeting.mandatory) { %>
+              <span class="takenote">Attendance Mandatory!</span>
+            <% } %>
+
+            <p class="mt-2"><%= meeting.location %></p>
+            <p><%= meeting.dateTime %></p>
+            <p><%= meeting.topic %></p>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%- include('../partials/footer.ejs') %>
+</body>
+</html>
